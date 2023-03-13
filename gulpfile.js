@@ -1,12 +1,12 @@
 const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
+const imageMin = require('gulp-imagemin');
 
 
-const imagemim = function() {
-    return gulp.src("./src/images/*")
-    .pipe(imagemin())
-    .pipe(gulp.dest('./dist/images'))
-}
+const imageMimi = function() {
+    return gulp.src('./src/images/*')
+        .pipe(imageMin())
+        .pipe(gulp.dest('./dist/images'))
+};
 
-exports.imageMimi = imagemim;
+exports.imageMimi = imageMimi;
 

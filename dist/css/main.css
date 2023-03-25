@@ -1,10 +1,1 @@
-body {
-  background-color: blue;
-}
-
-div {
-  background-color: blue;
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
-}
+body{background-color:#f0f8ff}div{background-color:blue;transform:scale(1)}

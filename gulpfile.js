@@ -5,6 +5,9 @@ const autoprefixer = require('gulp-autoprefixer');
 const fileinclude = require('gulp-file-include');
 const htmlmin = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
+const webpack = require('webpack-stream');
+const webpackConfig = require('./webpack.config');
+const clean = require('gulp-clean');
 
 const path = {
     root: "./dist",
@@ -14,6 +17,9 @@ const path = {
     imageDist: "./dist/images/",
     htmlSrc: "./src/html/index.html",
     htmlDist: "./dist/html/",
+    jsSrc: "./src/js/**/*.js",
+    jsDist: "./dist/js/"
+    
 }
 
 
@@ -70,11 +76,23 @@ const serverReload = function(cb) {
     cb();
 }
 
+const javascript = function() {
+    return gulp.src(path.jsSrc)
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest(path.jsDist))
+};
+
+const cleanDist = function() {
+    return gulp.src("./dist/js/**", {read: false})
+    .pipe(clean());
+}
+
 const watch = function() {
     gulp.watch(path.cssSrc, gulp.series(css, serverReload))
     gulp.watch(path.htmlSrc, gulp.series(html, serverReload))
+    gulp.watch(path.jsSrc, gulp.series(javascript, serverReload))
 }
 
 
-exports.default = gulp.series(html, css, server, watch);
+exports.default = gulp.series(cleanDist, html, css, javascript, server, watch);
 exports.production = gulp.series(imageMimi, html, css, cssCompiler, htmlCompiler);

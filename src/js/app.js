@@ -1,0 +1,1 @@
+const zmienna = 1;

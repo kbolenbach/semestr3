@@ -1,1 +1,1 @@
-const zmienna = 1;
+import { Vehicle } from "./components/new-class";

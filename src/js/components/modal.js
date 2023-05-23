@@ -1,6 +1,6 @@
-export class cookies {
-    $bodyEle = document.querySelector('body');
-    bodyOverlayClassName = "overlay";
+export class Cookies {
+    $bodyElement = document.querySelector('body');
+    bodyOverlayClassName = 'overlay';
     hideClassName = 'hide';
     showModalClassName = 'show';
     localStorageKey = 'modal';
@@ -9,35 +9,34 @@ export class cookies {
     constructor(modalName) {
         this.modal = document.querySelector(`#${modalName}`);
         this.closeButton = this.modal.querySelector('button');
-        this.bodyEle = document.querySelector('body');
     }
-
-    LocalSt() {
+   
+    setLocalStorage() {
+        // ten zapis dodaje do LocalStorage klucz "undefined" i wartość "accepted"
         localStorage.setItem(this.localStorageKey, "accepted");
     }
 
-    checkLocalStorage () {
-        localStorage.getItem(this.localStorageKey);
-        return;
+    checkLocalStorage() {
+        return localStorage.getItem(this.localStorageKey) === null;
     }
 
     handleCloseButton() {
 
         this.closeButton.addEventListener('click', function() {
-            // this.LocalSt();
-            // jeżeli tu wstawię:
-            localStorage.setItem(this.localStorageKey, "accepted");
-            // to dodaje poprawnie do localStorage
-            // ale wywołanie tej funkcji poprzez this. wyrzuca błąd w konsoli
 
-            if(this.checkLocalStorage === null) {
-                // a tu znowu twierdzi, że 
-                // Uncaught TypeError: Cannot read properties of undefined (reading 'classList')
-                this.$bodyEle.classList.add(this.bodyOverlayClassName);
-                // this.modal.classList.toggle(this.hideClassName);
+            localStorage.setItem(this.localStorageKey, "accepted");
+            // jeżeli w linii 27 używam this.setLocalStorage(); to w konsoli wyrzuca błąd:
+            // Uncaught TypeError: this.setLocalStorage is not a function
+            
+
+            // tu mi też wyrzuca błąd dla linii 35
+            // Uncaught TypeError: this.checkLocalStorage is not a function
+
+            if(this.checkLocalStorage()) {
+                this.handleCloseButton();
+                this.$bodyElement.classList.add(this.bodyOverlayClassName);
                } else {
-                this.$bodyEle.classList.remove(this.bodyOverlayClassName);
-                // this.modal.classList.toggle(this.hideClassName);
+                this.$bodyElement.classList.remove(this.bodyOverlayClassName);
             };
         })
     }

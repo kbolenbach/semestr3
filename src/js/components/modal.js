@@ -4,6 +4,7 @@ export class Cookies {
     hideClassName = 'hide';
     showModalClassName = 'show';
     localStorageKey = 'modal';
+    hideModalClassName = 'modal-hide';
     
 
     constructor(modalName) {
@@ -12,7 +13,6 @@ export class Cookies {
     }
    
     setLocalStorage() {
-        // ten zapis dodaje do LocalStorage klucz "undefined" i wartość "accepted"
         localStorage.setItem(this.localStorageKey, "accepted");
     }
 
@@ -22,21 +22,20 @@ export class Cookies {
 
     handleCloseButton() {
 
-        this.closeButton.addEventListener('click', function() {
+        this.closeButton.addEventListener('click', () => {
 
             localStorage.setItem(this.localStorageKey, "accepted");
-            // jeżeli w linii 27 używam this.setLocalStorage(); to w konsoli wyrzuca błąd:
-            // Uncaught TypeError: this.setLocalStorage is not a function
-            
-
-            // tu mi też wyrzuca błąd dla linii 35
-            // Uncaught TypeError: this.checkLocalStorage is not a function
 
             if(this.checkLocalStorage()) {
                 this.handleCloseButton();
                 this.$bodyElement.classList.add(this.bodyOverlayClassName);
                } else {
                 this.$bodyElement.classList.remove(this.bodyOverlayClassName);
+                this.modal.classList.remove(this.showModalClassName);
+                this.modal.classList.add(this.hideModalClassName);
+                setTimeout(() => {
+                    this.modal.parentNode.removeChild(this.modal);
+                 }, 500);
             };
         })
     }

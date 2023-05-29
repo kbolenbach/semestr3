@@ -20,6 +20,22 @@
     top: 50%;
   }
 }
+@-webkit-keyframes modal-out {
+  from {
+    top: 50%;
+  }
+  to {
+    top: -1000%;
+  }
+}
+@keyframes modal-out {
+  from {
+    top: 50%;
+  }
+  to {
+    top: -1000%;
+  }
+}
 html, body {
   height: 100%;
 }
@@ -51,6 +67,13 @@ body.overlay::before {
           animation-name: modal-in;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+}
+
+.modal-hide {
+  -webkit-animation-name: modal-out;
+          animation-name: modal-out;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
 }
 
 .hide {

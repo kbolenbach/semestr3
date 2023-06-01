@@ -1,6 +1,6 @@
-import { Cookies } from "./components/modal";
+import { Cookies } from "./components/modal2";
 
 const cookieButton = new Cookies(`modal-welcome`);
 
-// localStorage.clear();
+localStorage.clear();
 cookieButton.init();

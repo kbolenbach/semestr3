@@ -3,83 +3,54 @@
           box-sizing: border-box;
 }
 
-@-webkit-keyframes modal-in {
-  from {
-    top: -1000%;
-  }
-  to {
-    top: 50%;
-  }
-}
-
-@keyframes modal-in {
-  from {
-    top: -1000%;
-  }
-  to {
-    top: 50%;
-  }
-}
-@-webkit-keyframes modal-out {
-  from {
-    top: 50%;
-  }
-  to {
-    top: -1000%;
-  }
-}
-@keyframes modal-out {
-  from {
-    top: 50%;
-  }
-  to {
-    top: -1000%;
-  }
-}
 html, body {
   height: 100%;
 }
 
-body.overlay::before {
-  content: "";
-  position: absolute;
-  display: block;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.modal {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  background-color: red;
-  max-width: 600px;
-  padding: 50px;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-.modal.hide {
-  display: none;
+a {
+  color: rgb(12, 114, 231);
 }
 
-.show {
-  -webkit-animation-name: modal-in;
-          animation-name: modal-in;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+.form-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.modal-hide {
-  -webkit-animation-name: modal-out;
-          animation-name: modal-out;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+.form-group {
+  padding-left: 5px;
 }
 
-.hide {
-  display: none;
+.form-group:first-child {
+  padding-left: 0;
+}
+
+.user-info {
+  height: 300px;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.userAvatar {
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+.userName {
+  padding-left: 10px;
 }

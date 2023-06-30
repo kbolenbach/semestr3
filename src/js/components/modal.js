@@ -27,8 +27,16 @@ export class Cookies {
             this.modal.classList.add(this.hideModalClassName);
             this.$bodyElement.classList.remove(this.bodyOverlayClassName);
             this.setLocalStorage();
-            setTimeout(() => {this.modal.parentNode.removeChild(this.modal)}, 500);
+            setTimeout(() => {this.modal.parentNode.removeChild(this.modal)}, 3000);
         })
+    }
+
+    modalDelay() {
+        this.modal.classList.add(this.hideClassName)
+        setTimeout(() => {
+            this.modal.classList.remove(this.hideClassName);
+            this.modal.classList.add(this.showModalClassName);
+        }, 5000);
     }
 
     init() {
@@ -36,6 +44,6 @@ export class Cookies {
         if(this.checkLocalStorage()) {
             this.handleCloseButton();
             this.$bodyElement.classList.add(this.bodyOverlayClassName);
+            this.modalDelay();
         }
-    }
-}
+    }}

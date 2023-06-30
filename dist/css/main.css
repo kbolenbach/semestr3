@@ -62,11 +62,15 @@ body.overlay::before {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-.modal.show {
+.modal.hide {
+  display: none;
+}
+
+.show {
   -webkit-animation-name: modal-in;
           animation-name: modal-in;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
 }
 
 .modal-hide {

@@ -1,4 +1,4 @@
-import { Cookies } from "./components/modal2";
+import { Cookies } from "./components/modal";
 
 const cookieButton = new Cookies(`modal-welcome`);
 

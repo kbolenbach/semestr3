@@ -49,11 +49,14 @@ body {
    padding: 50px;
    transform: translate(-50%, -50%);
 
-   &.show {
-   animation-name: modal-in;
-   animation-duration: 1s;
+   &.hide {
+    display: none;
     }
-    
+}
+
+.show {
+    animation-name: modal-in;
+    animation-duration: 3s;
 }
 
 .modal-hide {
